@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Tracker</title>
+    <link rel="stylesheet" href="styles/popup.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🛡️ Phishing Tracker</h1>
+            <p>Real-time Website Safety</p>
+        </div>
+
+        <div class="status-section">
+            <div id="status-card" class="status-card loading">
+                <div class="spinner"></div>
+                <p>Scanning current website...</p>
+            </div>
+        </div>
+
+        <div class="details-section">
+            <h3>Website Details</h3>
+            <div id="details-container">
+                <p id="current-url" class="url-text">-</p>
+                <p id="threat-level" class="threat-level">-</p>
+            </div>
+        </div>
+
+        <div class="actions">
+            <button id="report-btn" class="btn btn-secondary">Report Threat</button>
+            <button id="refresh-btn" class="btn btn-primary">Refresh Scan</button>
+        </div>
+
+        <div class="footer">
+            <p>Powered by Google Safe Browsing API</p>
+        </div>
+    </div>
+    <script src="../dist/popup.js"></script>
+</body>
+</html>

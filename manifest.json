@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Phishing Tracker",
+  "version": "1.0.0",
+  "description": "Real-time phishing detection for your browser",
+  "permissions": [
+    "tabs",
+    "scripting",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "background": {
+    "service_worker": "dist/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "exclude_matches": [
+        "https://chrome.google.com/*",
+        "https://chromewebstore.google.com/*",
+        "https://accounts.google.com/*"
+      ],
+      "js": ["dist/content.js"],
+      "css": ["src/styles/notification.css"],
+      "run_at": "document_end"
+    }
+  ],
+  "action": {
+    "default_popup": "src/popup.html",
+    "default_title": "Phishing Tracker"
+  }
+}
