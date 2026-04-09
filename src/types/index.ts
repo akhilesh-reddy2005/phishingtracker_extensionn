@@ -2,6 +2,9 @@ export interface WebsiteStatus {
   isSafe: boolean;
   message: string;
   confidence: number;
+  riskScore: number;
+  riskLevel: 'safe' | 'warning' | 'danger';
+  threats: string[];
 }
 
 export interface PhishingDetectionResult {
@@ -38,4 +41,13 @@ export interface ThreatInfo {
   platformTypes: string[];
   threatEntryTypes: string[];
   threatEntries: Array<{ url: string }>;
+}
+
+export interface ThreatHistoryEntry {
+  url: string;
+  domain: string;
+  riskScore: number;
+  riskLevel: 'safe' | 'warning' | 'danger';
+  threats: string[];
+  timestamp: number;
 }

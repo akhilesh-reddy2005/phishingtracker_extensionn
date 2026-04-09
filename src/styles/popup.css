@@ -106,6 +106,16 @@ body {
     background: #d4edda;
 }
 
+.threat-level.warning {
+    color: #856404;
+    background: #fff3cd;
+}
+
+.threat-level.danger {
+    color: #dc3545;
+    background: #f8d7da;
+}
+
 .threat-level.unsafe {
     color: #dc3545;
     background: #f8d7da;
@@ -147,6 +157,29 @@ body {
 .btn-secondary:hover {
     background: #667eea;
     color: white;
+}
+
+.btn-history {
+    width: 100%;
+    padding: 9px;
+    margin-bottom: 15px;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-history:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.status-card.warning {
+    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    color: #5a3800;
 }
 
 .footer {
