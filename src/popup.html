@@ -7,21 +7,27 @@
     <link rel="stylesheet" href="styles/popup.css">
 </head>
 <body>
+    <div class="bg-shape bg-shape-left"></div>
+    <div class="bg-shape bg-shape-right"></div>
+
     <div class="container">
         <div class="header">
-            <h1>🛡️ Phishing Tracker</h1>
-            <p>Real-time Website Safety</p>
+            <div class="header-top">
+                <h1>Phishing Tracker</h1>
+                <div class="badge">LIVE</div>
+            </div>
+            <p>Security cockpit for the active tab</p>
         </div>
 
         <div class="status-section">
             <div id="status-card" class="status-card loading">
                 <div class="spinner"></div>
-                <p>Scanning current website...</p>
+                <p class="status-loading-text">Scanning current website...</p>
             </div>
         </div>
 
         <div class="details-section">
-            <h3>Website Details</h3>
+            <h3>Target URL</h3>
             <div id="details-container">
                 <p id="current-url" class="url-text">-</p>
                 <p id="threat-level" class="threat-level">-</p>
@@ -29,14 +35,14 @@
         </div>
 
         <div class="actions">
+            <button id="refresh-btn" class="btn btn-primary">Scan</button>
             <button id="report-btn" class="btn btn-secondary">Report Threat</button>
-            <button id="refresh-btn" class="btn btn-primary">Refresh Scan</button>
         </div>
 
-        <button id="history-btn" class="btn btn-history">View Threat History</button>
+        <button id="history-btn" class="btn btn-history">Threat Timeline</button>
 
         <div class="footer">
-            <p>Powered by Google Safe Browsing + Heuristics</p>
+            <p>Powered by Safe Browsing and heuristics</p>
         </div>
     </div>
     <script src="../dist/popup.js"></script>

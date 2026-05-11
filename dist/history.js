@@ -36,7 +36,7 @@
       container.innerHTML = '<p class="empty-msg">No history yet. Browse some websites!</p>';
       return;
     }
-    const icons = { safe: "\u2705", warning: "\u26A0\uFE0F", danger: "\u{1F6A8}" };
+    const icons = { safe: "\u2705", warning: "\u274C", danger: "\u274C" };
     container.innerHTML = history.map((entry) => {
       const time = new Date(entry.timestamp).toLocaleString();
       const threatsText = entry.threats.length > 0 ? entry.threats.slice(0, 2).join(" \xB7 ") : "";

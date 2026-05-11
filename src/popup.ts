@@ -66,10 +66,10 @@ function updateStatusDisplay(
 ): void {
   if (!statusCard || !threatLevelEl) return;
 
-  statusCard.classList.remove('loading', 'safe', 'unsafe', 'warning');
+  statusCard.classList.remove('loading', 'safe', 'unsafe', 'warning', 'danger');
   statusCard.classList.add(status.riskLevel);
 
-  const icons: Record<string, string> = { safe: '✅', warning: '⚠️', danger: '🚨' };
+  const icons: Record<string, string> = { safe: 'OK', warning: '!', danger: 'X' };
   const titles: Record<string, string> = {
     safe: 'Safe Website',
     warning: 'Suspicious Website',
@@ -77,34 +77,50 @@ function updateStatusDisplay(
   };
 
   const scoreBarColor: Record<string, string> = {
-    safe: '#28a745',
-    warning: '#fd7e14',
-    danger: '#dc3545'
+    safe: '#27c281',
+    warning: '#ffb648',
+    danger: '#ff5f5f'
   };
 
+  const boundedScore = Math.max(0, Math.min(100, status.riskScore));
+  const safeMessage = escapeHtml(status.message);
+  const threatList = status.threats
+    .slice(0, 3)
+    .map(t => `<li>${escapeHtml(t)}</li>`)
+    .join('');
+
   statusCard.innerHTML = `
-    <div style="font-size:32px; margin-bottom:8px;">${icons[status.riskLevel]}</div>
-    <h2 style="font-size:18px; margin-bottom:5px;">${titles[status.riskLevel]}</h2>
-    <p style="font-size:12px; margin-bottom:10px;">${status.message}</p>
-    <div style="background:rgba(0,0,0,0.1); border-radius:6px; padding:8px;">
-      <div style="display:flex; justify-content:space-between; font-size:12px; margin-bottom:4px;">
-        <span>Risk Score</span><strong>${status.riskScore}/100</strong>
+    <div class="status-top">
+      <h2 class="status-title">${titles[status.riskLevel]}</h2>
+      <span class="status-icon">${icons[status.riskLevel]}</span>
+    </div>
+    <p class="status-message">${safeMessage}</p>
+    <div class="risk-meter">
+      <div class="risk-meter-row">
+        <span>Risk Score</span>
+        <strong>${boundedScore}/100</strong>
       </div>
-      <div style="background:rgba(0,0,0,0.15); border-radius:4px; height:8px;">
-        <div style="width:${status.riskScore}%; background:${scoreBarColor[status.riskLevel]}; height:8px; border-radius:4px;"></div>
+      <div class="risk-meter-track">
+        <div class="risk-meter-fill" style="width:${boundedScore}%; background:${scoreBarColor[status.riskLevel]};"></div>
       </div>
     </div>
-    ${status.threats.length > 0 ? `
-    <ul style="margin:10px 0 0; padding:0 0 0 16px; font-size:11px; text-align:left;">
-      ${status.threats.slice(0, 3).map(t => `<li>${t}</li>`).join('')}
-    </ul>` : ''}
+    ${threatList ? `<ul class="threat-list">${threatList}</ul>` : ''}
   `;
 
   const levelLabels: Record<string, string> = {
-    safe: '✓ Safe',
-    warning: '⚠ Suspicious',
-    danger: '✕ Dangerous'
+    safe: 'Safe',
+    warning: 'Suspicious',
+    danger: 'Dangerous'
   };
   threatLevelEl.textContent = levelLabels[status.riskLevel];
   threatLevelEl.className = `threat-level ${status.riskLevel}`;
+}
+
+function escapeHtml(input: string): string {
+  return input
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 }

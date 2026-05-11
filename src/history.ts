@@ -51,7 +51,7 @@ function renderList(history: ThreatHistoryEntry[]): void {
     return;
   }
 
-  const icons: Record<string, string> = { safe: '✅', warning: '⚠️', danger: '🚨' };
+  const icons: Record<string, string> = { safe: '✅', warning: '❌', danger: '❌' };
 
   container.innerHTML = history.map(entry => {
     const time = new Date(entry.timestamp).toLocaleString();

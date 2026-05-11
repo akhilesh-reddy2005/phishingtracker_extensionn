@@ -8,25 +8,30 @@
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>🛡️ Phishing Tracker</h1>
-            <h2>Threat History</h2>
+        <div class="top-panel">
+            <div class="header">
+                <div class="pill">Threat Radar</div>
+                <h1>Phishing Tracker</h1>
+                <h2>History Console</h2>
+            </div>
+
+            <div class="stats-bar" id="stats-bar">
+                <div class="stat"><span id="stat-total">0</span><label>Total Scans</label></div>
+                <div class="stat safe"><span id="stat-safe">0</span><label>Safe</label></div>
+                <div class="stat warning"><span id="stat-warning">0</span><label>Suspicious</label></div>
+                <div class="stat danger"><span id="stat-danger">0</span><label>Dangerous</label></div>
+            </div>
         </div>
 
-        <div class="stats-bar" id="stats-bar">
-            <div class="stat"><span id="stat-total">0</span><label>Scanned</label></div>
-            <div class="stat safe"><span id="stat-safe">0</span><label>Safe</label></div>
-            <div class="stat warning"><span id="stat-warning">0</span><label>Suspicious</label></div>
-            <div class="stat danger"><span id="stat-danger">0</span><label>Dangerous</label></div>
-        </div>
+        <div class="history-shell">
+            <div class="toolbar">
+                <input type="text" id="search-input" placeholder="Filter by URL or domain" />
+                <button id="clear-btn" class="btn-clear">Clear History</button>
+            </div>
 
-        <div class="toolbar">
-            <input type="text" id="search-input" placeholder="Search URLs..." />
-            <button id="clear-btn" class="btn-clear">Clear History</button>
-        </div>
-
-        <div id="history-list">
-            <p class="empty-msg">No history yet. Browse some websites!</p>
+            <div id="history-list">
+                <p class="empty-msg">No history yet. Browse some websites!</p>
+            </div>
         </div>
     </div>
     <script src="../dist/history.js"></script>
