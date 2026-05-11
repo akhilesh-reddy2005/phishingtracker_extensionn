@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Tracker - Threat History</title>
+    <link rel="stylesheet" href="styles/history.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🛡️ Phishing Tracker</h1>
+            <h2>Threat History</h2>
+        </div>
+
+        <div class="stats-bar" id="stats-bar">
+            <div class="stat"><span id="stat-total">0</span><label>Scanned</label></div>
+            <div class="stat safe"><span id="stat-safe">0</span><label>Safe</label></div>
+            <div class="stat warning"><span id="stat-warning">0</span><label>Suspicious</label></div>
+            <div class="stat danger"><span id="stat-danger">0</span><label>Dangerous</label></div>
+        </div>
+
+        <div class="toolbar">
+            <input type="text" id="search-input" placeholder="Search URLs..." />
+            <button id="clear-btn" class="btn-clear">Clear History</button>
+        </div>
+
+        <div id="history-list">
+            <p class="empty-msg">No history yet. Browse some websites!</p>
+        </div>
+    </div>
+    <script src="../dist/history.js"></script>
+</body>
+</html>
